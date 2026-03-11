@@ -1,40 +1,18 @@
-//generate random number function / DONE
-//assign choice based on number / DONE
-//if rock VS / DONE
-//if paper VS / DONE
-//if scissors VS / DONE
-//real user input / DONE
-//round outcome output / DONE
-//another round button / DONE
-//score tracker / DONE
+//play buttons
+const images = document.querySelectorAll('img');
 
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        playRound(img);
+    });
+});
+
+//computer random number choice
 function getComputerChoice() {
     return Math.random()
 };
 
-//const randomNumber = getComputerChoice();
-
-let playerScore = 0;
-let numberRounds = 0;
-let userTextChoice = document.getElementById("userInputChoice");
-let userTextButton = document.getElementById("userButton");
-
-userTextButton.addEventListener("click" , function() {
-    const finalUserChoice = userTextChoice.value;
-    const randomNumber = getComputerChoice();
-    const computerWeapon = evaluateNumber(randomNumber);
-    document.getElementById("computerOutput").textContent = computerWeapon;
-    const roundDeclaration = evaluateWinner(finalUserChoice, computerWeapon);
-    roundOutput(roundDeclaration);
-    document.getElementById("yourScore").textContent = playerScore;
-    totalRounds();
-    document.getElementById("totalRounds").textContent = numberRounds;
-});
-
-function totalRounds(randomWord) {
-    numberRounds++;
-}
-
+//computer hand choice based on number
 function evaluateNumber(computerNumber) {
     if(computerNumber <= 0.33) {
         return "rock"
@@ -45,16 +23,7 @@ function evaluateNumber(computerNumber) {
     }   else {console.log("The machine broke")}
 };
 
-function roundOutput(roundDeclaration) {
-    alert(roundDeclaration);
-    if(roundDeclaration == "YOU WIN!") {
-        playerScore++;
-    }   else if(roundDeclaration == "YOU LOST!") {
-        playerScore--;
-    }
-};
-
-
+//evaluate who is the winner
 function evaluateWinner(humanChoice, computerChoice) {
     if(humanChoice === "rock" && computerChoice === "scissors") {
         return "YOU WIN!"
@@ -67,3 +36,11 @@ function evaluateWinner(humanChoice, computerChoice) {
     }  else {return "YOU LOST!"}
 };
 
+//plays a round, evaluates winner
+function playRound(humanChoice) {
+    const computerNumber = getComputerChoice();
+    const computerChoice = evaluateNumber(computerNumber);
+    humanChoice = humanChoice.dataset.choice;
+    const victory = evaluateWinner(humanChoice, computerChoice);
+    console.log(victory);
+}

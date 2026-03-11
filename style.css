@@ -1,7 +1,7 @@
 .container {
     display: flex;
     justify-content: space-between;
-    background-color: skyblue;
+    background-color: #AACDDC;
     padding: 10px;
 }
 
@@ -23,7 +23,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #2b6b96;
+    background-color: #F3E3D0;
     padding: 20px;
 }
 
@@ -58,9 +58,25 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 260px;
     justify-content: center;
-    gap: 10px;
-    background-color: #2b6b96;
+    gap: 30px;
+    background-color: #D2C4B4;
     color: white;
+}
+
+img {
+    width: 120px;
+    cursor: pointer;
+}
+
+img:hover {
+    outline: 2px solid black;
+    outline-offset: 10px;
+    outline-style: dashed;
+}
+
+.images {
+    display: flex;
+    gap: 60px;
 }
