@@ -1,12 +1,44 @@
 //play buttons
 const images = document.querySelectorAll('img');
+const rounds = document.querySelector('#rounds');
 
 images.forEach(img => {
     img.addEventListener('click', () => {
         document.querySelector('#roundText').innerHTML = '';
         playRound(img);
+        roundNumber += 1;
+        displayRoundNumber();
     });
 });
+
+//display round number img based on round
+function displayRoundNumber() {
+    switch (roundNumber) {
+        case 1:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberOne);
+            break;
+        case 2:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberTwo);
+            break;
+        case 3:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberThree);
+            break;
+        case 4:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberFour);
+            break;
+        case 5:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberFive);
+            break;
+        default:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberZero.cloneNode());
+    }
+}
 
 //computer random number choice
 function getComputerChoice() {
@@ -43,20 +75,14 @@ function playRound(humanChoice) {
     const computerChoice = evaluateNumber(computerNumber);
     humanChoice = humanChoice.dataset.choice;
     const victory = evaluateWinner(humanChoice, computerChoice);
-    console.log(victory);
 }
-
-
-//assign score and rounds number placeholders
-//const scoreImg = document.querySelector('score');
-//const roundImg = document.querySelector('rounds');
 
 //elements for score and number images
 const numberZero = document.createElement('img');
 numberZero.src = '/img/zero.png';
 //displaying score 0 by default
 document.querySelector('#score').appendChild(numberZero);
-document.querySelector('#rounds').appendChild(numberZero.cloneNode());
+rounds.appendChild(numberZero.cloneNode());
 
 const numberOne = document.createElement('img');
 numberOne.src = '/img/number-1.png';
@@ -81,3 +107,7 @@ roundWon.textContent = 'ROUND WON';
 
 const roundTie = document.createElement('h1');
 roundTie.textContent = `IT'S A TIE`;
+
+//player score and round number trackers
+let playerScore = 0;
+let roundNumber = 0;
