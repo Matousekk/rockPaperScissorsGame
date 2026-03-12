@@ -2,12 +2,19 @@
 const images = document.querySelectorAll('img');
 const rounds = document.querySelector('#rounds');
 
+//match button
+const matchBtn = document.querySelector('#userButtonTwo');
+matchBtn.textContent = 'Reset score';
+
+//Event listener for each image
 images.forEach(img => {
     img.addEventListener('click', () => {
         document.querySelector('#roundText').innerHTML = '';
         playRound(img);
         roundNumber += 1;
         displayRoundNumber();
+        scoreTracker(playerScore, computerScore);
+        console.log(roundNumber);
     });
 });
 
@@ -34,6 +41,12 @@ function displayRoundNumber() {
             rounds.innerHTML = '';
             rounds.appendChild(numberFive);
             break;
+        case 6:
+            rounds.innerHTML = '';
+            rounds.appendChild(numberZero.cloneNode());
+            document.querySelector('#roundText').innerHTML = '';
+            roundNumber = 0;
+            break;
         default:
             rounds.innerHTML = '';
             rounds.appendChild(numberZero.cloneNode());
@@ -59,17 +72,22 @@ function evaluateNumber(computerNumber) {
 //evaluate who is the winner
 function evaluateWinner(humanChoice, computerChoice) {
     if(humanChoice === "rock" && computerChoice === "scissors") {
-        document.querySelector('#roundText').appendChild(roundWon)
+        document.querySelector('#roundText').appendChild(roundWon);
+        playerScore += 1;
     }  else if(humanChoice === "paper" && computerChoice === "rock") {
-        document.querySelector('#roundText').appendChild(roundWon)
+        document.querySelector('#roundText').appendChild(roundWon);
+        playerScore += 1;
     }  else if(humanChoice === "scissors" && computerChoice === "paper") {
-        document.querySelector('#roundText').appendChild(roundWon)
+        document.querySelector('#roundText').appendChild(roundWon);
+        playerScore += 1;
     }  else if(humanChoice === computerChoice) {
-        return document.querySelector('#roundText').appendChild(roundTie)
-    }  else {document.querySelector('#roundText').appendChild(roundLost)}
+        return document.querySelector('#roundText').appendChild(roundTie);
+    }  else {
+        document.querySelector('#roundText').appendChild(roundLost);
+        computerScore += 1;
+    };
 };
 
-//plays a round, evaluates winner
 function playRound(humanChoice) {
     const computerNumber = getComputerChoice();
     const computerChoice = evaluateNumber(computerNumber);
@@ -80,10 +98,12 @@ function playRound(humanChoice) {
 //elements for score and number images
 const numberZero = document.createElement('img');
 numberZero.src = '/img/zero.png';
+
 //displaying score 0 by default
 document.querySelector('#score').appendChild(numberZero);
 rounds.appendChild(numberZero.cloneNode());
 
+//img elements
 const numberOne = document.createElement('img');
 numberOne.src = '/img/number-1.png';
 
@@ -107,7 +127,19 @@ roundWon.textContent = 'ROUND WON';
 
 const roundTie = document.createElement('h1');
 roundTie.textContent = `IT'S A TIE`;
+//img elements
+
 
 //player score and round number trackers
 let playerScore = 0;
 let roundNumber = 0;
+let computerScore = 0;
+
+//add score based on rounds
+function scoreTracker(playerWins, computerWins) {
+    if (playerWins == 5) {
+        console.log('addScore!');
+    }   else if (computerWins == 5) {
+        console.log('decrementScore');
+    }
+};
