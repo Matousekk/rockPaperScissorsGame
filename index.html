@@ -10,24 +10,26 @@
     <div class="container">
         <h1>Rock, paper, scissors game</h1>
             <div class="rightSide">
-                <div class="weapon">Computer weapon:</div>
                 <div id="computerOutput"></div>
             </div>
     </div>
     <div class="userPart">
         <div class="choice">Which hand will you play?</div>
-        <div class="inputText">Write your choice bellow!</div>
-        <input type="text" id="userInputChoice"></input>
-        <button id="userButton">Play round!</button>
+        <div class="images">
+            <img data-choice='rock' class='rockButton' src="img/fist.png">
+            <img data-choice='paper' class='paperButton' src="img/hand-paper.png">
+            <img data-choice='scissors' class='scissorsButton' src="img/scissors.png">
+        </div>
     </div>
             <div class="bottomUserPart">
-                <div>Total Rounds:</div>
-                <button id="userButtonTwo">Another round?</button>
-                <div>Your score:</div>
+                <div class="roundNumberText">Round number:</div>
+                <button id="userButtonTwo"></button>
+                <div class="scoreNumberText">Total score:</div>
             </div>
             <div class="bottomUserResults">
-                <div id="totalRounds">...</div>
-                <div id="yourScore">...</div>
+                <div id="rounds"></div>
+                <div id="roundText"></div>
+                <div id="score"></div>
             </div>
     <script src="game.js"></script>
 </body>

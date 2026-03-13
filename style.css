@@ -1,8 +1,11 @@
 .container {
     display: flex;
-    justify-content: space-between;
-    background-color: skyblue;
+    justify-content: center;
+    background-color: #AACDDC;
     padding: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 0 0 2px black;
 }
 
 * {
@@ -10,7 +13,10 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 170px;
+    background-image: url('/img/5564510.jpg');
 }
 
 .rightSide {
@@ -23,17 +29,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #2b6b96;
+    background-color: #F3E3D0;
     padding: 20px;
+    box-shadow: 0 0 0 2px black;
+}
+
+.bottomUserResults {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 #userButtonTwo {
     margin-right: 15px;
 }
 
+.roundNumberText {
+    margin-left: 8px;
+}
+
+.scoreNumberText {
+    margin-right: 15px;
+}
+
 button {
     padding: 10px;
     transition: background-color 0.25s;
+    box-shadow: 0 0 0 2px black;
 }
 
 button:hover {
@@ -47,6 +68,10 @@ button:hover {
     border-style: none;
 }
 
+.choice {
+    color: black;
+}
+
 #computerOutput {
     text-align: center;
     font-weight: 800;
@@ -58,9 +83,26 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 260px;
     justify-content: center;
-    gap: 10px;
-    background-color: #2b6b96;
+    gap: 30px;
+    background-color: #D2C4B4;
     color: white;
+    box-shadow: 0 0 0 2px black;
+}
+
+img {
+    width: 120px;
+}
+
+.rockButton:hover, .paperButton:hover, .scissorsButton:hover {
+    outline: 2px solid black;
+    outline-offset: 10px;
+    outline-style: dashed;
+}
+
+.images {
+    display: flex;
+    gap: 60px;
+    cursor: pointer;
 }
